@@ -29,9 +29,16 @@ public:
     enum class Type{SITE, CIRCLE};
 
     // Site event
-    Event(VoronoiDiagram::Site* site);
+    Event(VoronoiDiagram::Site* site) :
+        type(Type::SITE), y(site->point.y), index(-1), site(site)
+    {
+    }
+
     // Circle event
-    Event(double y, Vector2 point, Arc* arc);
+    Event(double y, Vector2 point, Arc* arc) :
+        type(Type::CIRCLE), y(y), index(-1), point(point), arc(arc)
+    {
+    }
 
     const Type type;
     double y;
